@@ -14,7 +14,18 @@ function* fetchArticles() {
 
 function* addArticles() {
   try {
-    let item = yield call(articleService.addItem);
+    // TODO: Check how to select from State
+    let title = select('title');
+    let image = select('image');
+    let description = select('description');
+    let text = select('text');
+
+    let item = yield call(articleService.addItem, {
+      title,
+      image,
+      description,
+      text,
+    });
 
     yield put({type: 'ARTICLE/ADDED_NEW_ARTICLE_SUCCESSFULLY', payload: {item}});
   } catch ({message}) {

@@ -10,7 +10,7 @@ const mapStateToProps = state => {
     text: state.article.editText,
   }
 };
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, state) => {
   return {
     editField: (fieldName, value) => dispatch({
       type: 'ARTICLE/EDIT_FIELD',
@@ -19,7 +19,7 @@ const mapDispatchToProps = dispatch => {
         value
       }
     }),
-    onSubmit: (fieldName, value) => dispatch({
+    onSubmit: () => dispatch({
       type: 'ARTICLE/ADD_NEW_ARTICLE',
     }),
   };
