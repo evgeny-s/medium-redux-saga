@@ -12,7 +12,7 @@ const initialState = {
 
 function articleReducer(state = initialState, action) {
   switch (action.type) {
-    case 'TEST':
+    case 'FETCH_COMPLETED':
       if (!action.payload.id || state.cartItems.includes(action.payload.id)) {
         return state;
       }

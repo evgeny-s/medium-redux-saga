@@ -1,6 +1,6 @@
 import React from 'react';
 
-function ArticleList({items}) {
+function ArticleList({items, putItemsToStore}) {
   return (
     <table className="table">
       <thead>
@@ -14,7 +14,7 @@ function ArticleList({items}) {
       <tbody>
       {
         items.map(({id, title, image, description}) => (
-          <tr>
+          <tr key={id}>
             <th scope="row">{id}</th>
             <td><img width='100px' src={image} /></td>
             <td>{title}</td>
