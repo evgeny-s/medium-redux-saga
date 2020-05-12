@@ -12,12 +12,27 @@ function* fetchArticles() {
   }
 }
 
+function* addArticles() {
+  try {
+    let item = yield call(articleService.addItem);
+
+    yield put({type: 'ARTICLE/ADDED_NEW_ARTICLE_SUCCESSFULLY', payload: {item}});
+  } catch ({message}) {
+    yield put({type: 'ARTICLE/ADDED_NEW_ARTICLE_ERROR', payload: {message}});
+  }
+}
+
 function* fetchArticlesSaga() {
   yield takeLatest('ARTICLE/FETCH', fetchArticles);
+}
+
+function* addArticlesSaga() {
+  yield takeLatest('ARTICLE/ADD_NEW_ARTICLE', addArticles);
 }
 
 export default function* articlesSaga() {
   yield all([
     fetchArticlesSaga(),
+    addArticlesSaga(),
   ]);
 };

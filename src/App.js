@@ -7,13 +7,13 @@ import {
 } from "react-router-dom";
 
 import ArticleList from "./containers/ArticleList";
-import ArticleEdit from "./components/ArticleEdit";
+import ArticleEdit from "./containers/ArticleEdit";
 
 function App() {
   function renderNavigation() {
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <a className="navbar-brand" href="#">Medium</a>
+        <a className="navbar-brand" href="/">Medium</a>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>

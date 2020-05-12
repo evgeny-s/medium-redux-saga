@@ -6,6 +6,12 @@ class ArticleService {
 
     return await result.json();
   }
+
+  async addItem(params) {
+    const result = await fetch(`${BASE_URL}/articles`);
+
+    return await result.json();
+  }
 }
 
 export default new ArticleService();
