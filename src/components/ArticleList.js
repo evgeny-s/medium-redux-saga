@@ -1,6 +1,11 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import PropTypes from 'prop-types';
 
-function ArticleList({items, putItemsToStore}) {
+function ArticleList({items, fetchArticles}) {
+  useEffect(() => {
+    fetchArticles();
+  }, []);
+
   return (
     <table className="table">
       <thead>
@@ -26,5 +31,10 @@ function ArticleList({items, putItemsToStore}) {
     </table>
   );
 }
+
+ArticleList.propTypes = {
+  items: PropTypes.array,
+  fetchArticles: PropTypes.func,
+};
 
 export default ArticleList;

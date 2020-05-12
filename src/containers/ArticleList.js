@@ -4,10 +4,16 @@ import ArticleList from "../components/ArticleList";
 
 const mapStateToProps = state => {
   return {
-    items: state.article.articles,
+    items: state.article.items,
   }
 };
-const mapDispatchToProps = dispatch => {};
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchArticles: () => dispatch({
+      type: 'ARTICLE/FETCH',
+    }),
+  };
+};
 
 export default connect(
   mapStateToProps,

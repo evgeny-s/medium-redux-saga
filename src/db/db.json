@@ -1,1 +1,11 @@
-{}
+{
+  "articles": [
+    {
+      "id": 1,
+      "title": "some title",
+      "image": "https://dyl80ryjxr1ke.cloudfront.net/external_assets/hero_examples/hair_beach_v1785392215/original.jpeg",
+      "description": "short description",
+      "text": "big text here"
+    }
+  ]
+}
