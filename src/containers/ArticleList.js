@@ -5,6 +5,7 @@ import ArticleList from "../components/ArticleList";
 const mapStateToProps = state => {
   return {
     items: state.article.items,
+    fetchArticleErrorMessage: state.article.fetchArticleErrorMessage,
   }
 };
 const mapDispatchToProps = dispatch => {
