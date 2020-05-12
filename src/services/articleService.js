@@ -8,7 +8,13 @@ class ArticleService {
   }
 
   async addItem(params) {
-    const result = await fetch(`${BASE_URL}/articles`);
+    const result = await fetch(`${BASE_URL}/articles`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(params)
+    });
 
     return await result.json();
   }

@@ -14,11 +14,10 @@ function* fetchArticles() {
 
 function* addArticles() {
   try {
-    // TODO: Check how to select from State
-    let title = select('title');
-    let image = select('image');
-    let description = select('description');
-    let text = select('text');
+    let title = yield select(state => state.article.editTitle);
+    let image = yield select(state => state.article.editImage);
+    let description = yield select(state => state.article.editDescription);
+    let text = yield select(state => state.article.editText);
 
     let item = yield call(articleService.addItem, {
       title,

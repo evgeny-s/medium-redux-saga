@@ -8,6 +8,9 @@ const mapStateToProps = state => {
     image: state.article.editImage,
     description: state.article.editDescription,
     text: state.article.editText,
+
+    errorMessage: state.article.createItemErrorMessage,
+    editSuccessfully: state.article.editSuccessfully,
   }
 };
 const mapDispatchToProps = (dispatch, state) => {
@@ -21,6 +24,9 @@ const mapDispatchToProps = (dispatch, state) => {
     }),
     onSubmit: () => dispatch({
       type: 'ARTICLE/ADD_NEW_ARTICLE',
+    }),
+    reset: () => dispatch({
+      type: 'ARTICLE/RESET_EDIT',
     }),
   };
 };

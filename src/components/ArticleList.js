@@ -1,10 +1,16 @@
 import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 
-function ArticleList({items, fetchArticles}) {
+function ArticleList({items, fetchArticles, fetchArticleErrorMessage}) {
   useEffect(() => {
     fetchArticles();
-  }, []);
+  }, [fetchArticles]);
+
+  useEffect(() => {
+    if (fetchArticleErrorMessage) {
+      alert(fetchArticleErrorMessage);
+    }
+  }, [fetchArticleErrorMessage]);
 
   return (
     <table className="table">
@@ -21,7 +27,7 @@ function ArticleList({items, fetchArticles}) {
         items.map(({id, title, image, description}) => (
           <tr key={id}>
             <th scope="row">{id}</th>
-            <td><img width='100px' src={image} /></td>
+            <td><img alt={title} width='100px' src={image} /></td>
             <td>{title}</td>
             <td>{description}</td>
           </tr>
@@ -35,6 +41,7 @@ function ArticleList({items, fetchArticles}) {
 ArticleList.propTypes = {
   items: PropTypes.array,
   fetchArticles: PropTypes.func,
+  fetchArticleErrorMessage: PropTypes.string,
 };
 
 export default ArticleList;

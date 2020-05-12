@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
+import {Redirect} from 'react-router-dom';
 
 function ArticleEdit(
   {
@@ -9,8 +10,17 @@ function ArticleEdit(
     text,
     onSubmit,
     editField,
+    errorMessage,
+    editSuccessfully,
+    reset,
   }
 ) {
+  useEffect(() => {
+    if (errorMessage) {
+      alert('Something went wrong. Try again later.');
+    }
+  }, [errorMessage]);
+
   function submit(e) {
     e.preventDefault();
 
@@ -33,14 +43,22 @@ function ArticleEdit(
   }, {
     value: text,
     name: 'Text',
-  }, ];
+  }];
+
+  if (editSuccessfully) {
+    reset();
+
+    return (
+      <Redirect to='/articles'/>
+    );
+  }
 
   return (
     <div>
       <form onSubmit={submit}>
         {
           fields.map((field) => (
-            <div className="form-group">
+            <div className="form-group" key={field.name}>
               <label htmlFor={`id-${field.name}`}>{field.name}</label>
               <input
                 value={field.value}
@@ -66,6 +84,9 @@ ArticleEdit.propTypes = {
   text: PropTypes.string,
   editField: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
+  errorMessage: PropTypes.string,
+  editSuccessfully: PropTypes.bool,
+  reset: PropTypes.func,
 };
 
 export default ArticleEdit;
